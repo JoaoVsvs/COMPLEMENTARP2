@@ -1,6 +1,6 @@
 ﻿namespace projetop2
 {
-    partial class CadastroPedidosFRM
+    partial class CadastroDeProdutosFRM
     {
         /// <summary>
         /// Required designer variable.
@@ -138,7 +138,7 @@
             dataGridView1.Size = new Size(431, 309);
             dataGridView1.TabIndex = 10;
             // 
-            // CadastroPedidosFRM
+            // CadastroDeProdutosFRM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -154,8 +154,8 @@
             Controls.Add(txtDescricao);
             Controls.Add(txtPreco);
             Controls.Add(txtNomeProduto);
-            Name = "CadastroPedidosFRM";
-            Text = "CadastroPedidosFRM";
+            Name = "CadastroDeProdutosFRM";
+            Text = "CadastrodeProdutosFRM";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

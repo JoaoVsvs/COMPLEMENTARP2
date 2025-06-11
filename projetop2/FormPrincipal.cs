@@ -31,7 +31,7 @@ namespace projetop2
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            CadastroPedidosFRM cadastroPedidos = new CadastroPedidosFRM();
+            CadastroDeProdutosFRM cadastroPedidos = new CadastroDeProdutosFRM();
             cadastroPedidos.Show();
         }
 

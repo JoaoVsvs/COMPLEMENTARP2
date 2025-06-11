@@ -6,12 +6,12 @@ using System.Windows.Forms;
 
 namespace projetop2
 {
-    public partial class CadastroPedidosFRM : Form
+    public partial class CadastroDeProdutosFRM : Form
     {
         private List<Produto> produtos = new List<Produto>();
-        private const string FilePath = "produtos.csv";
+        private const string FilePath = @"C:\Users\joaoe\Downloads\P2COMPLEMENTO\projetop2\produtos.csv";
 
-        public CadastroPedidosFRM()
+        public CadastroDeProdutosFRM()
         {
             InitializeComponent();
             CarregarProdutosDoArquivo();

@@ -46,27 +46,27 @@
             // 
             // btnProdutos
             // 
-            btnProdutos.Location = new Point(427, 123);
+            btnProdutos.Location = new Point(185, 205);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.Size = new Size(117, 48);
             btnProdutos.TabIndex = 1;
-            btnProdutos.Text = "Cadastro de Produtos";
+            btnProdutos.Text = "Cadastro de Pedido";
             btnProdutos.UseVisualStyleBackColor = true;
             btnProdutos.Click += btnProdutos_Click;
             // 
             // btnPedidos
             // 
-            btnPedidos.Location = new Point(185, 220);
+            btnPedidos.Location = new Point(427, 123);
             btnPedidos.Name = "btnPedidos";
             btnPedidos.Size = new Size(117, 48);
             btnPedidos.TabIndex = 2;
-            btnPedidos.Text = "Cadastro de Pedidos";
+            btnPedidos.Text = "Cadastro de Produtos";
             btnPedidos.UseVisualStyleBackColor = true;
             btnPedidos.Click += btnPedidos_Click;
             // 
             // btnClient
             // 
-            btnClient.Location = new Point(427, 220);
+            btnClient.Location = new Point(427, 205);
             btnClient.Name = "btnClient";
             btnClient.Size = new Size(117, 48);
             btnClient.TabIndex = 3;
