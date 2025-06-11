@@ -243,6 +243,7 @@
             btnSalvar.TabIndex = 22;
             btnSalvar.Text = "SALVAR";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnDeletar
             // 
