@@ -132,5 +132,38 @@ namespace projetop2
             MessageBox.Show("Senha atualizada com sucesso!");
             CarregarUsuarios();
         }
+
+        private void btnExibir_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    // Limpa os dados do DataGridView
+                    dataGridViewUsuarios.Rows.Clear();
+
+                    // Verifica se o arquivo existe
+                    if (!File.Exists(arquivoUsuarios))
+                    {
+                        MessageBox.Show("O arquivo de usuários não foi encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var linhas = File.ReadAllLines(arquivoUsuarios);
+
+                    foreach (var linha in linhas)
+                    {
+                        var dados = linha.Split(';'); 
+                        if (dados.Length >= 2)
+                        {
+                            dataGridViewUsuarios.Rows.Add(dados[0], dados[1]);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao tentar exibir os usuários: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

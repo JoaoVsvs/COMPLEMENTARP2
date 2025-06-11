@@ -111,6 +111,7 @@
             btnExibir.TabIndex = 7;
             btnExibir.Text = "Exibir Todos";
             btnExibir.UseVisualStyleBackColor = true;
+            btnExibir.Click += btnExibir_Click;
             // 
             // dataGridUsuarios
             // 
