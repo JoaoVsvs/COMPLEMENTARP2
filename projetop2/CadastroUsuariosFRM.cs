@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
@@ -78,47 +79,13 @@ namespace projetop2
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text.Trim();
-            string cpf = txtCPF.Text.Trim();
-            string email = txtEMAIL.Text.Trim();
-            string telefone = txtTELEFONE.Text.Trim();
-            string whatsapp = txtZAP.Text.Trim();
-            string cep = txtCEP.Text.Trim();
-            string logradouro = txtLOGADOURO.Text.Trim();
-            string numero = txtNUMERO.Text.Trim();
-            string bairro = txtBAIRRO.Text.Trim();
-            string cidade = txtCIDADE.Text.Trim();
-            string estado = txtESTADO.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(cpf) || string.IsNullOrWhiteSpace(email))
-            {
-                MessageBox.Show("Por favor, preencha os campos obrigatórios.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!ValidarFormulario())
                 return;
-            }
 
-            if (!Regex.IsMatch(cpf, @"^\d{11}$"))
-            {
-                MessageBox.Show("CPF inválido. Insira 11 dígitos numéricos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            var cliente = ObterClienteDoFormulario();
 
             try
             {
-                var cliente = new Cliente
-                {
-                    Nome = nome,
-                    CPF = cpf,
-                    Email = email,
-                    Telefone = telefone,
-                    WhatsApp = whatsapp,
-                    CEP = cep,
-                    Logradouro = logradouro,
-                    Numero = numero,
-                    Bairro = bairro,
-                    Cidade = cidade,
-                    Estado = estado
-                };
-
                 SaveCliente(cliente);
                 MessageBox.Show("Cliente salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
@@ -128,6 +95,47 @@ namespace projetop2
             {
                 MessageBox.Show($"Erro ao salvar cliente: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidarFormulario()
+        {
+            string nome = txtNome.Text.Trim();
+            string cpf = txtCPF.Text.Trim();
+            string email = txtEMAIL.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(cpf) || string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Por favor, preencha os campos obrigatórios.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(cpf, @"^\d{11}$"))
+            {
+                MessageBox.Show("CPF inválido. Insira 11 dígitos numéricos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Aqui você pode adicionar outras validações, como email válido, telefone, etc.
+
+            return true;
+        }
+
+        private Cliente ObterClienteDoFormulario()
+        {
+            return new Cliente
+            {
+                Nome = txtNome.Text.Trim(),
+                CPF = txtCPF.Text.Trim(),
+                Email = txtEMAIL.Text.Trim(),
+                Telefone = txtTELEFONE.Text.Trim(),
+                WhatsApp = txtZAP.Text.Trim(),
+                CEP = txtCEP.Text.Trim(),
+                Logradouro = txtLOGADOURO.Text.Trim(),
+                Numero = txtNUMERO.Text.Trim(),
+                Bairro = txtBAIRRO.Text.Trim(),
+                Cidade = txtCIDADE.Text.Trim(),
+                Estado = txtESTADO.Text.Trim()
+            };
         }
 
         private void SaveCliente(Cliente cliente)
