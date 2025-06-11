@@ -108,6 +108,7 @@
             btnAtualizar.TabIndex = 7;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnExcluir
             // 
@@ -117,6 +118,7 @@
             btnExcluir.TabIndex = 8;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click_1;
             // 
             // btnListar
             // 
@@ -126,6 +128,7 @@
             btnListar.TabIndex = 9;
             btnListar.Text = "Listar Produtos";
             btnListar.UseVisualStyleBackColor = true;
+            btnListar.Click += btnListar_Click;
             // 
             // dataGridView1
             // 
