@@ -38,7 +38,6 @@ namespace projetop2
                 foreach (var linha in linhas)
                 {
                     var dados = linha.Split(';');
-                    dataGridUsuarios.Rows.Add(dados[0], dados[1]);
                 }
             }
         }
@@ -138,10 +137,9 @@ namespace projetop2
             {
                 try
                 {
-                    // Limpa os dados do DataGridView
-                    dataGridViewUsuarios.Rows.Clear();
+                   
+                    dataGridUsuarios.Rows.Clear();
 
-                    // Verifica se o arquivo existe
                     if (!File.Exists(arquivoUsuarios))
                     {
                         MessageBox.Show("O arquivo de usuários não foi encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -155,7 +153,7 @@ namespace projetop2
                         var dados = linha.Split(';'); 
                         if (dados.Length >= 2)
                         {
-                            dataGridViewUsuarios.Rows.Add(dados[0], dados[1]);
+                            dataGridUsuarios.Rows.Add(dados[0], dados[1]);
                         }
                     }
                 }
