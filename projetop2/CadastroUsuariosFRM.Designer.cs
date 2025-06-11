@@ -263,6 +263,7 @@
             btnAtualizar.TabIndex = 25;
             btnAtualizar.Text = "ATUALIZAR";
             btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnExibirTodos
             // 
