@@ -28,12 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormPrincipal";
+            btnClientes = new Button();
+            btnProdutos = new Button();
+            btnPedidos = new Button();
+            btnUsers = new Button();
+            SuspendLayout();
+            // 
+            // btnClientes
+            // 
+            btnClientes.Location = new Point(185, 123);
+            btnClientes.Name = "btnClientes";
+            btnClientes.Size = new Size(117, 48);
+            btnClientes.TabIndex = 0;
+            btnClientes.Text = "Cadastro de Clientes";
+            btnClientes.UseVisualStyleBackColor = true;
+            btnClientes.Click += btnClientes_Click;
+            // 
+            // btnProdutos
+            // 
+            btnProdutos.Location = new Point(427, 123);
+            btnProdutos.Name = "btnProdutos";
+            btnProdutos.Size = new Size(117, 48);
+            btnProdutos.TabIndex = 1;
+            btnProdutos.Text = "Cadastro de Produtos";
+            btnProdutos.UseVisualStyleBackColor = true;
+            btnProdutos.Click += btnProdutos_Click;
+            // 
+            // btnPedidos
+            // 
+            btnPedidos.Location = new Point(185, 220);
+            btnPedidos.Name = "btnPedidos";
+            btnPedidos.Size = new Size(117, 48);
+            btnPedidos.TabIndex = 2;
+            btnPedidos.Text = "Cadastro de Pedidos";
+            btnPedidos.UseVisualStyleBackColor = true;
+            btnPedidos.Click += btnPedidos_Click;
+            // 
+            // btnUsers
+            // 
+            btnUsers.Location = new Point(427, 220);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(117, 48);
+            btnUsers.TabIndex = 3;
+            btnUsers.Text = "Cadastro de Usuário";
+            btnUsers.UseVisualStyleBackColor = true;
+            btnUsers.Click += btnUsers_Click;
+            // 
+            // FormPrincipal
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnUsers);
+            Controls.Add(btnPedidos);
+            Controls.Add(btnProdutos);
+            Controls.Add(btnClientes);
+            Name = "FormPrincipal";
+            Text = "FormPrincipal";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnClientes;
+        private Button btnProdutos;
+        private Button btnPedidos;
+        private Button btnUsers;
     }
 }
