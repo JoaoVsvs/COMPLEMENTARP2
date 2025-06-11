@@ -191,6 +191,43 @@ namespace projetop2
             txtESTADO.Text = row.Cells["Estado"].Value.ToString();
         }
 
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            if (dgvCEP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um cliente para deletar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var row = dgvCEP.SelectedRows[0];
+            string cpfParaDeletar = row.Cells["CPF"].Value.ToString();
+
+            var lines = new List<string>(File.ReadAllLines(filePath));
+            bool achou = false;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                var data = lines[i].Split(';');
+                if (data.Length > 0 && data[0] == cpfParaDeletar)
+                {
+                    lines.RemoveAt(i);
+                    achou = true;
+                    break;
+                }
+            }
+
+            if (achou)
+            {
+                File.WriteAllLines(filePath, lines);
+                LoadClientes();
+                ClearForm();
+                MessageBox.Show("Cliente deletado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Cliente não encontrado no arquivo.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
     public class Cliente
