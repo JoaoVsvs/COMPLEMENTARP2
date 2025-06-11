@@ -30,7 +30,7 @@ namespace projetop2
         private bool ValidarUsuario(string usuario, string senha)
         {
 
-            string caminhoArquivo = "usuarios.csv";
+            string caminhoArquivo = @"C:\Users\joaoe\Downloads\P2COMPLEMENTO\projetop2\user.csv";
 
             if (!File.Exists(caminhoArquivo))
             {
@@ -45,7 +45,5 @@ namespace projetop2
                 return dados[0] == usuario && dados[1] == senha;
             });
         }
-    }
-}
     }
 }
