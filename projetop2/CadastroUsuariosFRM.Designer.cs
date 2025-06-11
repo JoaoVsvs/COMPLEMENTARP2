@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
-            textBox11 = new TextBox();
+            txtNome = new TextBox();
+            txtCPF = new TextBox();
+            txtEMAIL = new TextBox();
+            txtCEP = new TextBox();
+            txtLOGADOURO = new TextBox();
+            txtNUMERO = new TextBox();
+            txtBAIRRO = new TextBox();
+            txtCIDADE = new TextBox();
+            txtESTADO = new TextBox();
+            txtTELEFONE = new TextBox();
+            txtZAP = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -59,82 +59,82 @@
             ((System.ComponentModel.ISupportInitialize)dgvCEP).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // txtNome
             // 
-            textBox1.Location = new Point(12, 30);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(193, 23);
-            textBox1.TabIndex = 0;
+            txtNome.Location = new Point(12, 30);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(193, 23);
+            txtNome.TabIndex = 0;
             // 
-            // textBox2
+            // txtCPF
             // 
-            textBox2.Location = new Point(12, 69);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(193, 23);
-            textBox2.TabIndex = 1;
+            txtCPF.Location = new Point(12, 69);
+            txtCPF.Name = "txtCPF";
+            txtCPF.Size = new Size(193, 23);
+            txtCPF.TabIndex = 1;
             // 
-            // textBox3
+            // txtEMAIL
             // 
-            textBox3.Location = new Point(12, 109);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(193, 23);
-            textBox3.TabIndex = 2;
+            txtEMAIL.Location = new Point(12, 109);
+            txtEMAIL.Name = "txtEMAIL";
+            txtEMAIL.Size = new Size(193, 23);
+            txtEMAIL.TabIndex = 2;
             // 
-            // textBox4
+            // txtCEP
             // 
-            textBox4.Location = new Point(12, 147);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(193, 23);
-            textBox4.TabIndex = 3;
+            txtCEP.Location = new Point(12, 147);
+            txtCEP.Name = "txtCEP";
+            txtCEP.Size = new Size(193, 23);
+            txtCEP.TabIndex = 3;
             // 
-            // textBox5
+            // txtLOGADOURO
             // 
-            textBox5.Location = new Point(12, 185);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(193, 23);
-            textBox5.TabIndex = 4;
+            txtLOGADOURO.Location = new Point(12, 185);
+            txtLOGADOURO.Name = "txtLOGADOURO";
+            txtLOGADOURO.Size = new Size(193, 23);
+            txtLOGADOURO.TabIndex = 4;
             // 
-            // textBox6
+            // txtNUMERO
             // 
-            textBox6.Location = new Point(12, 223);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(193, 23);
-            textBox6.TabIndex = 5;
+            txtNUMERO.Location = new Point(12, 223);
+            txtNUMERO.Name = "txtNUMERO";
+            txtNUMERO.Size = new Size(193, 23);
+            txtNUMERO.TabIndex = 5;
             // 
-            // textBox7
+            // txtBAIRRO
             // 
-            textBox7.Location = new Point(12, 259);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(193, 23);
-            textBox7.TabIndex = 6;
+            txtBAIRRO.Location = new Point(12, 259);
+            txtBAIRRO.Name = "txtBAIRRO";
+            txtBAIRRO.Size = new Size(193, 23);
+            txtBAIRRO.TabIndex = 6;
             // 
-            // textBox8
+            // txtCIDADE
             // 
-            textBox8.Location = new Point(12, 298);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(193, 23);
-            textBox8.TabIndex = 7;
+            txtCIDADE.Location = new Point(12, 298);
+            txtCIDADE.Name = "txtCIDADE";
+            txtCIDADE.Size = new Size(193, 23);
+            txtCIDADE.TabIndex = 7;
             // 
-            // textBox9
+            // txtESTADO
             // 
-            textBox9.Location = new Point(12, 337);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(193, 23);
-            textBox9.TabIndex = 8;
+            txtESTADO.Location = new Point(12, 337);
+            txtESTADO.Name = "txtESTADO";
+            txtESTADO.Size = new Size(193, 23);
+            txtESTADO.TabIndex = 8;
             // 
-            // textBox10
+            // txtTELEFONE
             // 
-            textBox10.Location = new Point(12, 377);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(193, 23);
-            textBox10.TabIndex = 9;
+            txtTELEFONE.Location = new Point(12, 377);
+            txtTELEFONE.Name = "txtTELEFONE";
+            txtTELEFONE.Size = new Size(193, 23);
+            txtTELEFONE.TabIndex = 9;
             // 
-            // textBox11
+            // txtZAP
             // 
-            textBox11.Location = new Point(12, 415);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(193, 23);
-            textBox11.TabIndex = 10;
+            txtZAP.Location = new Point(12, 415);
+            txtZAP.Name = "txtZAP";
+            txtZAP.Size = new Size(193, 23);
+            txtZAP.TabIndex = 10;
             // 
             // label1
             // 
@@ -279,6 +279,7 @@
             btnCEP.TabIndex = 27;
             btnCEP.Text = "BUSCAR CEP";
             btnCEP.UseVisualStyleBackColor = true;
+            btnCEP.Click += btnCEP_Click;
             // 
             // dgvCEP
             // 
@@ -310,17 +311,17 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox11);
-            Controls.Add(textBox10);
-            Controls.Add(textBox9);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtZAP);
+            Controls.Add(txtTELEFONE);
+            Controls.Add(txtESTADO);
+            Controls.Add(txtCIDADE);
+            Controls.Add(txtBAIRRO);
+            Controls.Add(txtNUMERO);
+            Controls.Add(txtLOGADOURO);
+            Controls.Add(txtCEP);
+            Controls.Add(txtEMAIL);
+            Controls.Add(txtCPF);
+            Controls.Add(txtNome);
             Name = "CadastroUsuariosFRM";
             Text = "CadastroUsuariosFRM";
             ((System.ComponentModel.ISupportInitialize)dgvCEP).EndInit();
@@ -330,17 +331,17 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private TextBox textBox11;
+        private TextBox txtNome;
+        private TextBox txtCPF;
+        private TextBox txtEMAIL;
+        private TextBox txtCEP;
+        private TextBox txtLOGADOURO;
+        private TextBox txtNUMERO;
+        private TextBox txtBAIRRO;
+        private TextBox txtCIDADE;
+        private TextBox txtESTADO;
+        private TextBox txtTELEFONE;
+        private TextBox txtZAP;
         private Label label1;
         private Label label2;
         private Label label3;
