@@ -35,7 +35,7 @@
             label2 = new Label();
             label3 = new Label();
             txtNome = new TextBox();
-            label4 = new Label();
+            lblNome = new Label();
             btnPesquisar = new Button();
             btnAdicionar = new Button();
             btnRemover = new Button();
@@ -100,14 +100,14 @@
             txtNome.Size = new Size(177, 23);
             txtNome.TabIndex = 6;
             // 
-            // label4
+            // lblNome
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(232, 28);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 15);
-            label4.TabIndex = 7;
-            label4.Text = "NOME DO CLIENTE";
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(232, 28);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(110, 15);
+            lblNome.TabIndex = 7;
+            lblNome.Text = "NOME DO CLIENTE";
             // 
             // btnPesquisar
             // 
@@ -117,6 +117,7 @@
             btnPesquisar.TabIndex = 8;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // btnAdicionar
             // 
@@ -143,7 +144,6 @@
             dataGridViewItens.Name = "dataGridViewItens";
             dataGridViewItens.Size = new Size(335, 206);
             dataGridViewItens.TabIndex = 11;
-            dataGridViewItens.CellContentClick += this.dataGridViewItens_CellContentClick;
             // 
             // lblTotal
             // 
@@ -174,7 +174,7 @@
             Controls.Add(btnRemover);
             Controls.Add(btnAdicionar);
             Controls.Add(btnPesquisar);
-            Controls.Add(label4);
+            Controls.Add(lblNome);
             Controls.Add(txtNome);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -198,7 +198,7 @@
         private Label label2;
         private Label label3;
         private TextBox txtNome;
-        private Label label4;
+        private Label lblNome;
         private Button btnPesquisar;
         private Button btnAdicionar;
         private Button btnRemover;
