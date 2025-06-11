@@ -8,6 +8,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace projetop2
 {
@@ -16,53 +19,47 @@ namespace projetop2
         public CadastroUsuariosFRM()
         {
             InitializeComponent();
+            LoadClientes();
         }
 
         private void btnCEP_Click(object sender, EventArgs e)
         {
-            string cep = txtCEP.Text.Trim().Replace("-", "");
-            if (cep.Length != 8)
-
-            {
-                MessageBox.Show("Digite um CEP válido com 8 números.");
-                return;
-            }
-
-            try
-            {
-                using HttpClient client = new HttpClient();
-                string url = $"https://viacep.com.br/ws/{cep}/json/";
-
-                var response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-                string json = await response.Content.ReadAsStringAsync();
-                var endereco = JsonSerializer.Deserialize<ViaCepResponse>(json);
-
-                if (endereco != null && endereco.Erro != true)
+                string cep = txtCEP.Text.Trim();
+                if (!Regex.IsMatch(cep, @"^\d{8}$"))
                 {
-                    txtLOGADOURO.Text = endereco.Logradouro;
-                    txtBAIRRO.Text = endereco.Bairro;
-                    txtCIDADE.Text = endereco.Localidade;
-                    txtESTADO.Text = endereco.Uf;
+                    MessageBox.Show("CEP inválido. Insira 8 dígitos numéricos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
+
+                try
                 {
-                    MessageBox.Show("CEP não encontrado.");
+                    using (HttpClient client = new HttpClient())
+                    {
+                        HttpResponseMessage response = client.GetAsync($"https://viacep.com.br/ws/{cep}/json/").Result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var json = response.Content.ReadAsStringAsync().Result;
+                            var endereco = JsonSerializer.Deserialize<Endereco>(json);
+
+                            if (endereco != null && !endereco.Erro)
+                            {
+                                txtLOGADOURO.Text = endereco.Logradouro;
+                                txtBAIRRO.Text = endereco.Bairro;
+                                txtCIDADE.Text = endereco.Localidade;
+                                txtESTADO.Text = endereco.Uf;
+                            }
+                            else
+                            {
+                                MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao buscar CEP: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao consultar o CEP: " + ex.Message);
-            }
-        }
-        public class ViaCepResponse
-        {
-            public string Logradouro { get; set; }
-            public string Bairro { get; set; }
-            public string Localidade { get; set; }
-            public string Uf { get; set; }
-            public bool Erro { get; set; }
+
         }
     }
-}
