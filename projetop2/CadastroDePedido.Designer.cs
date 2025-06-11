@@ -127,6 +127,7 @@
             btnAdicionar.TabIndex = 9;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnRemover
             // 
@@ -136,6 +137,7 @@
             btnRemover.TabIndex = 10;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
             // 
             // dataGridViewItens
             // 
@@ -162,6 +164,7 @@
             btnGravar.TabIndex = 13;
             btnGravar.Text = "Gravar Pedido";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // CadastroDePedido
             // 
