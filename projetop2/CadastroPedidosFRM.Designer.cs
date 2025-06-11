@@ -98,6 +98,7 @@
             btnAdicionar.TabIndex = 6;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnAtualizar
             // 
