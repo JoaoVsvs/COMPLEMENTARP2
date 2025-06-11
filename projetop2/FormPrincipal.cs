@@ -25,7 +25,7 @@ namespace projetop2
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            CadastroProdutosFRM cadastroProdutos = new CadastroProdutosFRM();
+            CadastroDePedido cadastroProdutos = new CadastroDePedido();
             cadastroProdutos.Show();
         }
 

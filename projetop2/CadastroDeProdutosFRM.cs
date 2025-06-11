@@ -14,7 +14,40 @@ namespace projetop2
         public CadastroDeProdutosFRM()
         {
             InitializeComponent();
+            ConfigurarArquivo();
+            ConfigurarDataGridView();
             CarregarProdutosDoArquivo();
+        }
+
+        private void ConfigurarArquivo()
+        {
+            try
+            {
+                if (!File.Exists(FilePath))
+                {
+                    var directory = Path.GetDirectoryName(FilePath);
+                    if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    File.Create(FilePath).Close();
+                    MessageBox.Show("Arquivo de produtos criado com sucesso.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao configurar o arquivo: {ex.Message}");
+            }
+        }
+
+        private void ConfigurarDataGridView()
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Nome", "Nome");
+            dataGridView1.Columns.Add("Preco", "Preço");
+            dataGridView1.Columns.Add("Descricao", "Descrição");
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -45,6 +78,7 @@ namespace projetop2
             AtualizarDataGrid();
             LimparCampos();
         }
+
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -79,28 +113,47 @@ namespace projetop2
 
         private void CarregarProdutosDoArquivo()
         {
-            if (File.Exists(FilePath))
+            try
             {
-                var linhas = File.ReadAllLines(FilePath);
-                produtos = linhas.Select(linha =>
+                if (File.Exists(FilePath))
                 {
-                    var campos = linha.Split(';');
-                    return new Produto
+                    var linhas = File.ReadAllLines(FilePath);
+                    produtos = linhas.Select(linha =>
                     {
-                        Nome = campos[0],
-                        Preco = decimal.Parse(campos[1]),
-                        Descricao = campos[2]
-                    };
-                }).ToList();
+                        var campos = linha.Split(';');
+                        if (campos.Length == 3)
+                        {
+                            return new Produto
+                            {
+                                Nome = campos[0],
+                                Preco = decimal.TryParse(campos[1], out var preco) ? preco : 0,
+                                Descricao = campos[2]
+                            };
+                        }
 
-                AtualizarDataGrid();
+                        return null;
+                    }).Where(p => p != null).ToList();
+
+                    AtualizarDataGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar os produtos: {ex.Message}");
             }
         }
 
         private void SalvarProdutosNoArquivo()
         {
-            var linhas = produtos.Select(p => $"{p.Nome};{p.Preco};{p.Descricao}").ToList();
-            File.WriteAllLines(FilePath, linhas);
+            try
+            {
+                var linhas = produtos.Select(p => $"{p.Nome};{p.Preco};{p.Descricao}").ToList();
+                File.WriteAllLines(FilePath, linhas);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao salvar os produtos: {ex.Message}");
+            }
         }
 
         private void LimparCampos()
@@ -110,27 +163,24 @@ namespace projetop2
             txtDescricao.Clear();
         }
 
-        private void btnExcluir_Click_1(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
             {
-                if (dataGridView1.SelectedRows.Count == 0)
-                {
-                    MessageBox.Show("Selecione um produto para excluir.");
-                    return;
-                }
-
-                var index = dataGridView1.SelectedRows[0].Index;
-                produtos.RemoveAt(index);
-
-                SalvarProdutosNoArquivo();
-                AtualizarDataGrid();
+                MessageBox.Show("Selecione um produto para excluir.");
+                return;
             }
+
+            var index = dataGridView1.SelectedRows[0].Index;
+            produtos.RemoveAt(index);
+
+            SalvarProdutosNoArquivo();
+            AtualizarDataGrid();
         }
 
         private void btnListar_Click(object sender, EventArgs e)
         {
             CarregarProdutosDoArquivo();
-            AtualizarDataGrid();
         }
     }
 

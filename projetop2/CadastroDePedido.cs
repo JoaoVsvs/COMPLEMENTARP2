@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace projetop2
 {
-    public partial class CadastroProdutosFRM : Form
+    public partial class CadastroDePedido : Form
     {
-        public CadastroProdutosFRM()
+        public CadastroDePedido()
         {
             InitializeComponent();
         }
