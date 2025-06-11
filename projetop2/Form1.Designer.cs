@@ -76,6 +76,7 @@
             btnValidar.TabIndex = 4;
             btnValidar.Text = "Entrar";
             btnValidar.UseVisualStyleBackColor = true;
+            btnValidar.Click += btnValidar_Click;
             // 
             // LoginForm
             // 
