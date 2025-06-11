@@ -50,6 +50,13 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
+            btnSalvar = new Button();
+            btnDeletar = new Button();
+            btnAtualizar = new Button();
+            btnExibirTodos = new Button();
+            btnCEP = new Button();
+            dgvCEP = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvCEP).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -228,11 +235,70 @@
             label11.TabIndex = 21;
             label11.Text = "WHATSAPP";
             // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(454, 281);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 32);
+            btnSalvar.TabIndex = 22;
+            btnSalvar.Text = "SALVAR";
+            btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletar
+            // 
+            btnDeletar.Location = new Point(454, 337);
+            btnDeletar.Name = "btnDeletar";
+            btnDeletar.Size = new Size(75, 32);
+            btnDeletar.TabIndex = 24;
+            btnDeletar.Text = "DELETAR";
+            btnDeletar.UseVisualStyleBackColor = true;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.Location = new Point(574, 281);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 32);
+            btnAtualizar.TabIndex = 25;
+            btnAtualizar.Text = "ATUALIZAR";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            // 
+            // btnExibirTodos
+            // 
+            btnExibirTodos.Location = new Point(574, 337);
+            btnExibirTodos.Name = "btnExibirTodos";
+            btnExibirTodos.Size = new Size(75, 32);
+            btnExibirTodos.TabIndex = 26;
+            btnExibirTodos.Text = "EXIBIR";
+            btnExibirTodos.UseVisualStyleBackColor = true;
+            // 
+            // btnCEP
+            // 
+            btnCEP.Location = new Point(505, 398);
+            btnCEP.Name = "btnCEP";
+            btnCEP.Size = new Size(91, 40);
+            btnCEP.TabIndex = 27;
+            btnCEP.Text = "BUSCAR CEP";
+            btnCEP.UseVisualStyleBackColor = true;
+            // 
+            // dgvCEP
+            // 
+            dgvCEP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCEP.Location = new Point(317, 12);
+            dgvCEP.Name = "dgvCEP";
+            dgvCEP.Size = new Size(440, 250);
+            dgvCEP.TabIndex = 28;
+            // 
             // CadastroUsuariosFRM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvCEP);
+            Controls.Add(btnCEP);
+            Controls.Add(btnExibirTodos);
+            Controls.Add(btnAtualizar);
+            Controls.Add(btnDeletar);
+            Controls.Add(btnSalvar);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
@@ -257,6 +323,7 @@
             Controls.Add(textBox1);
             Name = "CadastroUsuariosFRM";
             Text = "CadastroUsuariosFRM";
+            ((System.ComponentModel.ISupportInitialize)dgvCEP).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -285,5 +352,11 @@
         private Label label9;
         private Label label10;
         private Label label11;
+        private Button btnSalvar;
+        private Button btnDeletar;
+        private Button btnAtualizar;
+        private Button btnExibirTodos;
+        private Button btnCEP;
+        private DataGridView dgvCEP;
     }
 }
