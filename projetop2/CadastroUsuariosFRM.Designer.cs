@@ -271,6 +271,7 @@
             btnExibirTodos.TabIndex = 26;
             btnExibirTodos.Text = "EXIBIR";
             btnExibirTodos.UseVisualStyleBackColor = true;
+            btnExibirTodos.Click += btnExibirTodos_Click;
             // 
             // btnCEP
             // 

@@ -168,6 +168,29 @@ namespace projetop2
             txtCIDADE.Clear();
             txtESTADO.Clear();
         }
+
+        private void btnExibirTodos_Click(object sender, EventArgs e)
+        {
+            if (dgvCEP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione um cliente na tabela para exibir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var row = dgvCEP.SelectedRows[0];
+            txtCPF.Text = row.Cells["CPF"].Value.ToString();
+            txtNome.Text = row.Cells["Nome"].Value.ToString();
+            txtEMAIL.Text = row.Cells["Email"].Value.ToString();
+            txtTELEFONE.Text = row.Cells["Telefone"].Value.ToString();
+            txtZAP.Text = row.Cells["WhatsApp"].Value.ToString();
+            txtCEP.Text = row.Cells["CEP"].Value.ToString();
+            txtLOGADOURO.Text = row.Cells["Logradouro"].Value.ToString();
+            txtNUMERO.Text = row.Cells["Número"].Value.ToString();
+            txtBAIRRO.Text = row.Cells["Bairro"].Value.ToString();
+            txtCIDADE.Text = row.Cells["Cidade"].Value.ToString();
+            txtESTADO.Text = row.Cells["Estado"].Value.ToString();
+        }
+
     }
 
     public class Cliente
