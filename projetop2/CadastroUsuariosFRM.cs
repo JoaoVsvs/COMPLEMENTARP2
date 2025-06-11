@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projetop2
@@ -17,6 +18,13 @@ namespace projetop2
             InitializeComponent();
             ConfigureDataGridView();
             LoadClientes();
+
+            btnCEP.Click += async (s, e) => await btnCEP_ClickAsync(s, e);
+
+            btnSalvar.Click += btnSalvar_Click;
+            btnExibirTodos.Click += btnExibirTodos_Click;
+            btnDeletar.Click += btnDeletar_Click;
+            btnAtualizar.Click += btnAtualizar_Click;
         }
 
         private void ConfigureDataGridView()
@@ -37,10 +45,10 @@ namespace projetop2
                 dgvCEP.Columns[10].Name = "Estado";
             }
         }
-
-        private void btnCEP_Click(object sender, EventArgs e)
+        private async Task btnCEP_ClickAsync(object sender, EventArgs e)
         {
             string cep = txtCEP.Text.Trim();
+
             if (!Regex.IsMatch(cep, @"^\d{8}$"))
             {
                 MessageBox.Show("CEP inválido. Insira 8 dígitos numéricos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -49,27 +57,29 @@ namespace projetop2
 
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    HttpResponseMessage response = client.GetAsync($"https://viacep.com.br/ws/{cep}/json/").Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var json = response.Content.ReadAsStringAsync().Result;
-                        var endereco = JsonSerializer.Deserialize<Endereco>(json);
+                using HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
 
-                        if (endereco != null && !endereco.Erro)
-                        {
-                            txtLOGADOURO.Text = endereco.Logradouro;
-                            txtBAIRRO.Text = endereco.Bairro;
-                            txtCIDADE.Text = endereco.Localidade;
-                            txtESTADO.Text = endereco.Uf;
-                        }
-                        else
-                        {
-                            MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Erro ao buscar o CEP.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                string json = await response.Content.ReadAsStringAsync();
+
+                var endereco = JsonSerializer.Deserialize<Endereco>(json);
+
+                if (endereco == null || endereco.Erro)
+                {
+                    MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                txtLOGADOURO.Text = endereco.Logradouro;
+                txtBAIRRO.Text = endereco.Bairro;
+                txtCIDADE.Text = endereco.Localidade;
+                txtESTADO.Text = endereco.Uf;
             }
             catch (Exception ex)
             {
@@ -114,8 +124,6 @@ namespace projetop2
                 MessageBox.Show("CPF inválido. Insira 11 dígitos numéricos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            // Aqui você pode adicionar outras validações, como email válido, telefone, etc.
 
             return true;
         }
@@ -252,7 +260,7 @@ namespace projetop2
             var clienteAtualizado = ObterClienteDoFormulario();
 
             var lines = new List<string>(File.ReadAllLines(filePath));
-            bool achou = false;
+            bool atualizado = false;
 
             for (int i = 0; i < lines.Count; i++)
             {
@@ -260,12 +268,12 @@ namespace projetop2
                 if (data.Length > 0 && data[0] == cpfOriginal)
                 {
                     lines[i] = $"{clienteAtualizado.CPF};{clienteAtualizado.Nome};{clienteAtualizado.Email};{clienteAtualizado.Telefone};{clienteAtualizado.WhatsApp};{clienteAtualizado.CEP};{clienteAtualizado.Logradouro};{clienteAtualizado.Numero};{clienteAtualizado.Bairro};{clienteAtualizado.Cidade};{clienteAtualizado.Estado}";
-                    achou = true;
+                    atualizado = true;
                     break;
                 }
             }
 
-            if (achou)
+            if (atualizado)
             {
                 File.WriteAllLines(filePath, lines);
                 LoadClientes();
@@ -274,15 +282,27 @@ namespace projetop2
             }
             else
             {
-                MessageBox.Show("Cliente não encontrado no arquivo.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cliente não encontrado para atualizar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
 
+
+    public class Endereco
+    {
+        public string Cep { get; set; }
+        public string Logradouro { get; set; }
+        public string Complemento { get; set; }
+        public string Bairro { get; set; }
+        public string Localidade { get; set; }
+        public string Uf { get; set; }
+        public bool Erro { get; set; } 
+    }
+
     public class Cliente
     {
-        public string Nome { get; set; }
         public string CPF { get; set; }
+        public string Nome { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string WhatsApp { get; set; }
@@ -292,14 +312,5 @@ namespace projetop2
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-    }
-
-    public class Endereco
-    {
-        public string Logradouro { get; set; }
-        public string Bairro { get; set; }
-        public string Localidade { get; set; }
-        public string Uf { get; set; }
-        public bool Erro { get; set; }
     }
 }

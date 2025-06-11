@@ -283,7 +283,6 @@
             btnCEP.TabIndex = 27;
             btnCEP.Text = "BUSCAR CEP";
             btnCEP.UseVisualStyleBackColor = true;
-            btnCEP.Click += btnCEP_Click;
             // 
             // dgvCEP
             // 
