@@ -40,5 +40,10 @@ namespace projetop2
             CadastroUsuariosFRM cadastroUsuarios = new CadastroUsuariosFRM();
             cadastroUsuarios.Show();
         }
+
+        private void btnConsultaPedidos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

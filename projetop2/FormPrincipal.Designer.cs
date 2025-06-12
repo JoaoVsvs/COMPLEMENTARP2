@@ -83,6 +83,7 @@
             btnConsultaPedidos.TabIndex = 4;
             btnConsultaPedidos.Text = "Consulta de Pedidos";
             btnConsultaPedidos.UseVisualStyleBackColor = true;
+            btnConsultaPedidos.Click += btnConsultaPedidos_Click;
             // 
             // FormPrincipal
             // 
