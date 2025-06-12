@@ -32,6 +32,7 @@
             btnProdutos = new Button();
             btnPedidos = new Button();
             btnClient = new Button();
+            btnConsultaPedidos = new Button();
             SuspendLayout();
             // 
             // btnClientes
@@ -74,11 +75,21 @@
             btnClient.UseVisualStyleBackColor = true;
             btnClient.Click += btnUsers_Click;
             // 
+            // btnConsultaPedidos
+            // 
+            btnConsultaPedidos.Location = new Point(304, 297);
+            btnConsultaPedidos.Name = "btnConsultaPedidos";
+            btnConsultaPedidos.Size = new Size(117, 48);
+            btnConsultaPedidos.TabIndex = 4;
+            btnConsultaPedidos.Text = "Consulta de Pedidos";
+            btnConsultaPedidos.UseVisualStyleBackColor = true;
+            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnConsultaPedidos);
             Controls.Add(btnClient);
             Controls.Add(btnPedidos);
             Controls.Add(btnProdutos);
@@ -94,5 +105,6 @@
         private Button btnProdutos;
         private Button btnPedidos;
         private Button btnClient;
+        private Button btnConsultaPedidos;
     }
 }
