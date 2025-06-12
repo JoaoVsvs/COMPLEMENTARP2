@@ -43,7 +43,8 @@ namespace projetop2
 
         private void btnConsultaPedidos_Click(object sender, EventArgs e)
         {
-
+            ConsultaDePedidosFRM consultapedidos = new ConsultaDePedidosFRM();
+            consultapedidos.Show();
         }
     }
 }
