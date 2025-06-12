@@ -49,27 +49,27 @@
             lblCPF.AutoSize = true;
             lblCPF.Location = new Point(21, 61);
             lblCPF.Name = "lblCPF";
-            lblCPF.Size = new Size(38, 15);
+            lblCPF.Size = new Size(28, 15);
             lblCPF.TabIndex = 1;
-            lblCPF.Text = "label1";
+            lblCPF.Text = "CPF";
             // 
             // lblNomeCliente
             // 
             lblNomeCliente.AutoSize = true;
             lblNomeCliente.Location = new Point(21, 90);
             lblNomeCliente.Name = "lblNomeCliente";
-            lblNomeCliente.Size = new Size(38, 15);
+            lblNomeCliente.Size = new Size(40, 15);
             lblNomeCliente.TabIndex = 2;
-            lblNomeCliente.Text = "label2";
+            lblNomeCliente.Text = "Nome";
             // 
             // lblTotalPedido
             // 
             lblTotalPedido.AutoSize = true;
             lblTotalPedido.Location = new Point(21, 120);
             lblTotalPedido.Name = "lblTotalPedido";
-            lblTotalPedido.Size = new Size(38, 15);
+            lblTotalPedido.Size = new Size(44, 15);
             lblTotalPedido.TabIndex = 3;
-            lblTotalPedido.Text = "label3";
+            lblTotalPedido.Text = "Pedido";
             // 
             // btnBuscar
             // 

@@ -52,10 +52,10 @@ namespace projetop2
                     MessageBox.Show("Nenhum pedido encontrado para este CPF.");
                 }
             }
+        }
 
         private string BuscarNomeClientePorCPF(string cpf)
         {
-            // Simulação de busca por nome (integre com um arquivo ou base real)
             if (cpf == "12345678900") return "João Silva";
             return "Cliente Desconhecido";
         }
