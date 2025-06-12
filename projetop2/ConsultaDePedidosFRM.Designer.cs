@@ -33,8 +33,8 @@
             lblNomeCliente = new Label();
             lblTotalPedido = new Label();
             btnBuscar = new Button();
-            listView1 = new ListView();
-            listView2 = new ListView();
+            listViewPedidos = new ListView();
+            listViewItens = new ListView();
             SuspendLayout();
             // 
             // txtCPF
@@ -79,30 +79,31 @@
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // listView1
+            // listViewPedidos
             // 
-            listView1.Location = new Point(253, 23);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(236, 138);
-            listView1.TabIndex = 5;
-            listView1.UseCompatibleStateImageBehavior = false;
+            listViewPedidos.Location = new Point(253, 23);
+            listViewPedidos.Name = "listViewPedidos";
+            listViewPedidos.Size = new Size(236, 138);
+            listViewPedidos.TabIndex = 5;
+            listViewPedidos.UseCompatibleStateImageBehavior = false;
             // 
-            // listView2
+            // listViewItens
             // 
-            listView2.Location = new Point(527, 23);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(236, 138);
-            listView2.TabIndex = 6;
-            listView2.UseCompatibleStateImageBehavior = false;
+            listViewItens.Location = new Point(527, 23);
+            listViewItens.Name = "listViewItens";
+            listViewItens.Size = new Size(236, 138);
+            listViewItens.TabIndex = 6;
+            listViewItens.UseCompatibleStateImageBehavior = false;
             // 
             // ConsultaDePedidosFRM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView2);
-            Controls.Add(listView1);
+            Controls.Add(listViewItens);
+            Controls.Add(listViewPedidos);
             Controls.Add(btnBuscar);
             Controls.Add(lblTotalPedido);
             Controls.Add(lblNomeCliente);
@@ -121,7 +122,7 @@
         private Label lblNomeCliente;
         private Label lblTotalPedido;
         private Button btnBuscar;
-        private ListView listView1;
-        private ListView listView2;
+        private ListView listViewPedidos;
+        private ListView listViewItens;
     }
 }
